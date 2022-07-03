@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block Content %}
+<!--Body-->
+<div class="container-fluid mt-3">
+
+
+    </div>
+
+
+
+    <!--all products-->
+    <div id='products' class="mx-auto">
+      <div class="row mx-auto">
+        {% for product in products %}
+        <div class="card mx-auto mb-3 mt-3 ml-3 mr-3 pb-4 pt-4 pl-4 pr-4" style="width: 18rem;">
+          <img class="card-img-top" src="{{product.image.url}}" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">{{product.name}}</h5>
+            <p class="card-text">{{product.price}}</p>
+            <a href="#" class="btn btn-primary">Add to cart</a>
+          </div>
+        </div>
+    
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+
