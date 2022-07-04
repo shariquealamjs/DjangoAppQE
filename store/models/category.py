@@ -3,6 +3,7 @@ from django.db import models
 
 class Category(models.Model):
     name = models.CharField(max_length=30)
+    image = models.ImageField(upload_to='uploads/categoryimages/', default='/home/ttn/Desktop/onions.jpg')
 
     @staticmethod
     def get_all_categories():
