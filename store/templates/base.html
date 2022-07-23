@@ -1,3 +1,4 @@
+{% load static %}
 <!doctype html>
 <html lang="en">
   <head>
@@ -12,16 +13,11 @@
     <title>Crown-Shop-Home-Page</title>
   </head>
   <body>
-    <style>
-      .y{
-        background-image: url("https://images.pexels.com/photos/3616764/pexels-photo-3616764.jpeg?auto=compress&cs=tinysrgb&w=600");
-        background-repeat:inherit;
-        }
-    </style>
+    
    
     <!--Navbar-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
-      <a class="navbar-brand" href="#">Home</a>
+      <a class="navbar-brand" href="/"><img src="{% static '/images/cocaine.jpeg' %}"></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -29,8 +25,8 @@
     
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Store <span class="sr-only">(current)</span></a>
+          <li class="nav-item ">
+            <a class="nav-link" href="/">Store <span class="sr-only">(current)</span></a>
           </li>
   
         </ul>
@@ -49,13 +45,8 @@
           </li>
     
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              My Profile
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">1</a>
-              <a class="dropdown-item" href="#">2</a>
-            </div>
+            
+            <a class="nav-link" href="#">My Cart <span class="sr-only">(current)</span></a>
           </li>
           
         </ul>
@@ -64,8 +55,8 @@
       </div>
     </nav>
 
-    
-    <div class = 'y'>
+  
+    <div id = "y" class = "container-fluid mt-3">
     {% block Content %}{% endblock %}
     </div>
     <!-- Optional JavaScript -->

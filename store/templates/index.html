@@ -2,16 +2,18 @@
 {% block Content %}
 <!--Body-->
 <div class="container-fluid mt-3">
-    </div>
     <div id='categories' class="mx-auto">
       <div class="row mx-auto">
         {% for category in categories %}
         <div class="card mx-auto mb-3 mt-3 ml-3 mr-3 border rounded" style="width: 18rem;">
-          <img class="card-img-top" src="{{category.image.url}}" alt="Card image cap" width="400" height="200">
-          <div class="card-body text-center" style="height: 5rem;">
-              <button type="button" class="btn btn-primary bg-light" ><a href="/?category = {{category.id}}">{{category.name}}</a></button>
+          <img class="card-img-top" src="{{category.image.url}}" style="height: 18rem;" alt="Card image cap">
+            <div class="card-body text-center text-nowrap" style="height: 1rem;">{{category.name}}
+            </div>
+          <div class="card-footer text-center" style="height: 4rem;">
+            <button type="button" class="btn btn-primary bg-light" ><a href="/?category = {{category.id}}">View in Store</a></button>
           </div>
         </div>
+        
         {% endfor %}
 
         
@@ -20,23 +22,22 @@
   </div>
 
 </div>
-<div id='products' class="mx-auto">
-  <div class="row mx-auto">
-    {% for product in products %}
-    <div class="card mx-auto mb-3 mt-3 ml-3 mr-3 border rounded" style="width: 18rem;">
-      <img class="card-img-top" src="{{product.image.url}}" alt="Card image cap" width="400" height="200">
-      <div class="card-body text-center" style="height: 5rem;">
+<div class="container-fluid mt-3">
+  <div id='products' class="mx-auto">
+    <div class="row mx-auto">
+      {% for product in products %}
+      <div class="card mx-auto mb-3 mt-3 ml-3 mr-3 border rounded" style="width: 18rem;" >
+        <img class="card-img-top" src="{{product.image.url}}" alt="Card image cap">
+          <div class="card-body text-center text-nowrap" style="height: 1rem;">Rs. {{product.price}}/-</div>
+        <div class="card-footer text-center text-nowrap" style="height: 2.5rem;">{{product.description}}</div>
+        <div class="card-footer text-center" style="height: 4rem;">
           <button type="button" class="btn btn-primary bg-dark" >Add to Cart</button>
+        </div>
       </div>
+      {% endfor %}
     </div>
-    {% endfor %}
-
-    
   </div>
 </div>
-</div>
-</div>
-
 {% endblock %}
 
 
