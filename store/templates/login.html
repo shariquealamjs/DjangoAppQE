@@ -4,7 +4,7 @@
 <div class="container">
     <div class = "p-4 m-4">
         <div class="col-lg-5 mx-auto border  rounded pt-4">
-            <form action="/signup" method="post">{% csrf_token %}
+            <form action="/login" method="post">{% csrf_token %}
 
                 <nav class="navbar navbar-expand-lg navbar-light bg-light">
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -12,7 +12,7 @@
                     </button>
                     <div class="collapse navbar-collapse pt-0 pb-0 pl-0 pr-0" id="navbarNavAltMarkup" style="padding: 0rem;">
                       <div class="navbar-nav" style="height:40px; width:100%; background: darkgrey">
-                        <a class="nav-item nav-link active text-center" href="#"><h6 style="text-align: center;">Create an Account</h6><span class="sr-only">(current)</span></a>
+                        <a class="nav-item nav-link active text-center" href="#"><h6 style="text-align: center;">Login to your account</h6><span class="sr-only">(current)</span></a>
                       </div>
                     </div>
                   </nav>
@@ -22,26 +22,8 @@
                     <h6 style ="text-align: center;" class="alert-heading">{{error}}</h6>
                   </div>
                   {% endif %}
-                <!--First Name-->
-                <div class="form-group">
-                    <label for="">First Name</label>
-                    <input type="text" name="firstname" id="" class="form-control form-control-sm" placeholder="abc">
-                  </div>
-
-                <!--Second Name-->
-                <div class="form-group">
-                    <label for="">Last Name</label>
-                    <input type="text" name="lastname" id="" class="form-control form-control-sm" placeholder="xyz">
-                  </div>
-
-                <!--Phone Number-->
-                <div class="form-group">
-                    <label for="">Phone</label>
-                    <input type="text" name="phone" id="" class="form-control form-control-sm" placeholder="1234567890">
-                  </div>
-
-
-                <!--Email-->
+                
+                 <!--Email-->
                 <div class="form-group">
                   <label for="">Email</label>
                   <input required type="email" name="email" id="email" class="form-control form-control-sm" placeholder="example@gmail.com">
@@ -56,7 +38,7 @@
 
                 <!--Submit Button-->
                 <div class="form-group">
-                    <button class="btn btn-primary" type="submit">Create my Account</button>
+                    <button class="btn btn-primary" type="submit">Login</button>
                   </div>
 
                 
