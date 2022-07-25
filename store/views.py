@@ -19,8 +19,13 @@ def index(request):
 
     if categoryid:
         data = {'products': Product.get_products_by_id(categoryid)}
+        print("Dear Customer, your email is: ",request.session.get('customer_email'))
+        print("Dear Customer, your id is: ", request.session.get('customer_id'))
     else:
         data = {'categories': categories}
+        print("Dear Customer, your email is: ",request.session.get('customer_email'))
+        print("Dear Customer, your id is: ", request.session.get('customer_id'))
+
     return render(request, 'index.html', data)
 
 
@@ -83,6 +88,8 @@ def login(request):
         if customer:
             flag = check_password(password, encryptedpassword)
             if flag:
+                request.session['customer_email']=customer.email
+                request.session['customer_id'] = customer.id
                 return redirect('homepage')
             else:
                 return HttpResponse('Email or Password is wrong!')
