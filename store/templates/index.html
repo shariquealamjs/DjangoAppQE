@@ -28,7 +28,7 @@
   <div id='products' class="mx-auto">
     <div class="row mx-auto">
       {% for product in products %}
-      <div class="card mx-auto mb-3 mt-3 ml-3 mr-3 border rounded" style="width: 18rem;" >
+      <div class="card mx-auto mb-3 mt-3 ml-3 mr-3 border rounded" id="{{product.id}}" style="width: 18rem;" >
         <img class="card-img-top" src="{{product.image.url}}" alt="Card image cap">
 
           <div class="card-body text-center text-nowrap pt-2 pb-2 " style="height: 2rem;">Rs. {{product.price}}/-</div>
@@ -42,14 +42,40 @@
 
           {% if product|is_in_cart:request.session.cart %}
           <div class="card-footer row text-center text-nowrap mt-0 mb-0 mr-0 ml-0 pt-0 pb-0 pr-0 pl-0 " style="height: 4rem;">
-            <input type="submit" value="-" class="col-2 m-2 btn btn-block btn-secondary">
+
+
+            <form action="{{category.id}}#{{product.id}}" method="post" class="col-2 m-2">
+
+              {% csrf_token %}
+
+
+              <input hidden type="text" name ='product' value = '{{product.id}}'>
+              <input hidden type="text" name ='remove' value = 'True'>
+              <input type="submit" value="-" class="btn btn-block btn-secondary">
+
+
+            </form>
+
+      
+            
             <div class="text-center col mt-3 mb-">{{product|cart_quantity:request.session.cart}} in Cart</div>
-            <input type="submit" value="+" class="col-2 m-2 btn btn-block btn-secondary">
-              
+            
+            <form action="{{category.id}}#{{product.id}}" method="post" class="col-2 m-2">
+
+              {% csrf_token %}
+
+
+              <input hidden type="text" name ='product' value = '{{product.id}}'>
+              <input type="submit" value="+" class="btn btn-block btn-secondary">
+
+
+            </form>  
+
+
           </div>
 
           {% else %}
-          <form action="{{category.id}}" method="POST">
+          <form action="{{category.id}}#{{product.id}}" method="POST">
             {% csrf_token %}
             <input hidden type="text" name ='product' value = '{{product.id}}'>
             <input type="submit" class="btn btn-primary bg-dark" value = "Add to Cart">

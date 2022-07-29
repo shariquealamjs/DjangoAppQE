@@ -29,3 +29,8 @@ class Login(View):
                 return HttpResponse('Email or Password is wrong!')
         else:
             return HttpResponse('Email or Password is wrong!')
+
+
+def logout(request):
+    request.session.clear()
+    return redirect('login')
