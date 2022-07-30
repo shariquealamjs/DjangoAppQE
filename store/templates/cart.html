@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+
+{% block Content %}
+
+{% load cart %}
+
+<div class="container">
+    <div class="border rounded p-4 m-4 text-center ">Cart
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Image</th>
+                <th>Product's Price</th>
+                <th>Product's Quantity</th>
+                <th>Total Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            {% for productsincart in products_in_cart %}
+            <tr>
+                <td><img style ="height: 60px;" class="rounded-circle pr-2 mr-2" src="{{productsincart.image.url}}">{{productsincart.name}}</td>
+                <td>{{productsincart.price}}</td>
+                <td>{{productsincart|cart_quantity:request.session.cart}}</td>
+                <td>{{productsincart|total_price:request.session.cart}}</td>
+            </tr>
+            {% endfor %}
+            
+
+        </tbody>
+    
+    </table>
+    
+
+    <table class="table ">
+        <thead>
+            <tr>
+                <th class="text-center">Your total amount is: Rs {{products_in_cart|total_cart_price:request.session.cart}} /-</th>
+            </tr>
+
+            {% if request.session.customer_id %} 
+
+            <tr>
+              <th>
+                <th><a href="#" data-toggle="modal" data-target="#exampleModal"class="btn btn-i nfo border rounded col-lg-6 float-right">Checkout</a></div></th>
+              </th>
+            </tr>
+
+            {% else %} 
+
+            <tr>
+              <th class="text-center">Please log in to your account to place order</th>
+            </tr>
+
+
+
+            {% endif %}
+
+            
+        </thead>
+        
+    </table>
+    
+
+</div>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Checkout Form</h5>
+          <hr>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+
+            <div class="m-2 p-2" >
+                <form action="/checkout " method="POST">
+                    {% csrf_token %}
+                    <div class="form-group">
+                      <label for="">Address</label>
+                      <input type="text" name="address" id="" class="form-control" placeholder="" aria-describedby="helpId">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="">Phone</label>
+                        <input type="text" name="phone" id="" class="form-control" placeholder="" aria-describedby="helpId">
+                      </div>
+
+                      <input type="submit" class="btn btn-outline-info float-right"value="Check out">
+
+
+                </form>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

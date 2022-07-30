@@ -21,4 +21,9 @@ class Product(models.Model):
             return Product.objects.all()
 
 
+    @staticmethod
+    def get_products_using_product_id(id):
+        return Product.objects.filter(id__in = id)
+
+
 

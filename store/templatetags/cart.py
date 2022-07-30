@@ -13,6 +13,7 @@ def is_in_cart(product, cart):
     return False
 
 
+
 @register.filter(name='cart_quantity')
 def cart_quantity(product, cart):
     keys = cart.keys()
@@ -21,3 +22,21 @@ def cart_quantity(product, cart):
         if int(id) == product.id:
             return cart.get(id)
     return False
+
+@register.filter(name='total_price')
+def total_price(product, cart):
+    total = product.price * cart_quantity(product, cart)
+
+    print(total)
+    return total
+
+
+@register.filter(name='total_cart_price')
+def total_cart_price(product, cart):
+    sum = 0
+    for p in product:
+        sum += total_price(p, cart)
+
+    return sum
+
+
